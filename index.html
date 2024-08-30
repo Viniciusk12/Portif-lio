@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Vinícius Machado</div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre-mim">Sobre Mim</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li class="translation-buttons">
+                        <button id="btn-pt" class="active">PT</button>
+                        <button id="btn-es">ES</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>   
+    <section class="hero">
+        <div class="container">
+            <h1>Olá, sou Vinicius Machado</h1>
+            <p>Desenvolvedor Web especializado em HTML e CSS, estudante de JS.</p>
+        </div>
+    </section>
+    <section id="sobre-mim" class="sobre-mim">
+        <div class="container">
+            <img src="foto.jpeg" alt="Foto de [Seu Nome]">
+            <div>
+                <h2>Sobre Mim</h2>
+                <p>
+                    Sou Vinícius Machado, desenvolvedor web com experiência em HTML, CSS e em constante evolução no estudo de JavaScript. Tenho paixão por criar interfaces intuitivas e responsivas, e trabalho em projetos pessoais que me desafiam a aprender e aplicar novas tecnologias. Este portfólio foi criado para compartilhar um pouco do meu trabalho, minhas habilidades e a dedicação que coloco em cada projeto.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2>Meus Projetos</h2>
+            <div class="projetos-grid">
+                <div class="projeto-card">
+                    <img src="Essos.png" alt="Projeto 1">
+                    <br>
+                    <h3>Conto de Essos</h3>
+                    <p>Um projeto pessoal, de um site destinado a ser uma pequena biblioteca para materiais de Role Play Games</p>
+                    <a href="https://contosdeessos.github.io/Essos/index.html" class="btn" target="_blank">Ver Projeto</a>
+                </div>
+                <div class="projeto-card">
+                    <img src="FA.png" alt="Projeto 2">
+                    <br>
+                    <h3>FA Engenharia de Projetos</h3>
+                    <p>Um site comercial destinado a usuários que buscam o apoio logístico de um engenheiro para seus projetos.
+                    <br></br>(AINDA EM DESENVOLVIMENTO)
+                    </p>                   
+                    <a href="https://johnmar-k12.github.io/FA.github.io/" class="btn" target="_blank">Ver Projeto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            <form id="contact-form">
+                <input type="text" name="user_name" placeholder="Nome" required>
+                <input type="email" name="user_email" placeholder="E-mail" required>
+                <textarea name="message" placeholder="Mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="success-message" style="display: none; color: green; margin-top: 15px;">Email enviado com sucesso!</p>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>© 2024 Vinicius Machado. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script de Tradução -->
+    <script src="translate.js"></script>
+
+    <!-- Adicione o SDK do EmailJS -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('s15Aa8uOrgj8MhIQm'); // Substitua 'SEU_USER_ID' pelo seu User ID do EmailJS
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            // Envia o formulário com EmailJS
+            emailjs.sendForm('service_iilat2g', 'template_kd7bt9n', this)
+                .then(function() {
+                    // Mostra a mensagem de sucesso
+                    document.getElementById('success-message').style.display = 'block';
+                }, function(error) {
+                    console.log('Falha no envio do email:', error);
+                    alert('Ocorreu um erro ao enviar o email. Tente novamente mais tarde.');
+                });
+        });
+    </script>
+</body>
+</html>
